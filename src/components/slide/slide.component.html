@@ -1,0 +1,19 @@
+<div class="slide-container">
+  <div class="slide">
+    <div class="restaurant">
+      <img
+        class="picture"
+        src="{{ restaurant.image }}"
+        alt="{{ restaurant.name }}"
+      />
+      <h1>{{ restaurant.name }}</h1>
+      <div class="desc">
+        <p>{{ restaurant.cuisine }}</p>
+        <p>•</p>
+        <p>{{ restaurant.location }}</p>
+      </div>
+      <p class="note">{{ restaurant.note }}</p>
+      <button class="button" (click)="goToLink()">Look!</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="deck-container">
+  <header class="header">
+    <h1 class="tittle">Foodie Swipe</h1>
+    <p class="subtitle">Top 24 foodie destinations</p>
+  </header>
+  <div class="deck-stack">
+    @for (
+      restaurant of listRestaurants;
+      track restaurant.name;
+      let i = $index
+    ) {
+      <app-slide
+        class="card"
+        [restaurant]="restaurant"
+        [class.active]="i === activeIndex"
+        [style.zIndex]="listRestaurants.length - i"
+        [style.transform]="getCardTransform(i)"
+        (touchstart)="i === activeIndex && onTouchStart($event)"
+        (touchmove)="i === activeIndex && onTouchMove($event)"
+        (touchend)="i === activeIndex && onTouchEnd($event)"
+      ></app-slide>
+    }
+  </div>
+  <button class="import" (click)="openList()">Import To Beli</button>
+</div>
