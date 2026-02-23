@@ -26,22 +26,39 @@ export class RestaurantDeckComponent {
     if (offset < 0) return 'translateX(-150%)'; // already swiped
 
     if (offset === 0) {
+      // active card
       return `
-      translateX(${this.translateX}px)
-      rotate(${this.translateX / 20}deg)
-    `;
+        translateX(${this.translateX}px)
+        rotate(${this.translateX / 20}deg)
+      `;
     }
-
+    //cards undernearth get smaller and shifted slightly right
     return `
-    scale(${1 - offset * 0.05})
-    translateX(${offset * 12}px)
-  `;
+      scale(${1 - offset * 0.05})
+      translateX(${offset * 12}px)
+    `;
+
+    // const length = this.listRestaurants.length;
+    // const offset = (i - this.activeIndex + length) % length;
+
+    // if (offset === 0) {
+    //   return `
+    //     translateX(${this.translateX}px)
+    //     rotate(${this.translateX / 20}deg)
+    //   `;
+    // }
+
+    // return `
+    //   scale(${Math.max(1 - offset * 0.05, 0.8)})
+    //   translateX(${offset * 12}px)
+    // `;
   }
 
   private onSwipeRight() {
     // show next card
     console.log('starting index' + this.activeIndex);
     this.activeIndex = (this.activeIndex + 1) % this.listRestaurants.length;
+    this.translateX = 0;
     console.log('new index' + this.activeIndex);
   }
 
@@ -51,6 +68,7 @@ export class RestaurantDeckComponent {
     this.activeIndex =
       (this.activeIndex - 1 + this.listRestaurants.length) %
       this.listRestaurants.length;
+    this.translateX = 0;
     console.log('new index' + this.activeIndex);
   }
 
@@ -95,7 +113,7 @@ export class RestaurantDeckComponent {
 
       // setTimeout(() => {
       this.translateX = 0;
-      this.onSwipeRight(); // or left
+      this.onSwipeLeft(); // or left
       // }, 250);
     }
   }

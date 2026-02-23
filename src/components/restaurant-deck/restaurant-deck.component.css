@@ -49,13 +49,19 @@
 }
 
 .card:not(.active) {
-  transform: scale(0.95) translateY(10px);
+  /* transform: scale(0.95) translateY(10px); */
   opacity: 0.8;
   z-index: 0;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .card.active {
   transition: none;
+  transform: none;
+  opacity: 1;
+  z-index: 0;
+  background-color: red;
 }
 
 .import {
